@@ -17,7 +17,6 @@ bool isSpO2Ok(float spo2) {
     return (spo2 >= 90);
 }
 
-namespace {
 void blinkWarning() {
     for (int i = 0; i < 6; ++i) {
         cout << "\r* " << flush;
@@ -31,7 +30,6 @@ void showAlert(const char* message) {
     cout << message << '\n';
     blinkWarning();
 }
-} //namespace
 
 bool vitalsOk(float temperature, float pulseRate, float spo2) {
     if (!isTemperatureOk(temperature)) {
