@@ -32,22 +32,17 @@ void showAlert(const char* message) {
 }
 
 bool vitalsOk(float temperature, float pulseRate, float spo2) {
-    bool ok = true;
-
     if (!isTemperatureOk(temperature)) {
         showAlert("Temperature is critical!");
-        ok = false;
+        return false;
     }
-
     if (!isPulseOk(pulseRate)) {
         showAlert("Pulse Rate is out of range!");
-        ok = false;
+        return false;
     }
-
     if (!isSpO2Ok(spo2)) {
         showAlert("Oxygen Saturation out of range!");
-        ok = false;
+        return false;
     }
-
-    return ok;
+    return true;
 }
