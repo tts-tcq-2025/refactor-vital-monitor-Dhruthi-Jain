@@ -38,10 +38,12 @@ bool vitalsOk(float temperature, float pulseRate, float spo2) {
         showAlert("Temperature is critical!");
         ok = false;
     }
+
     if (!isPulseOk(pulseRate)) {
         showAlert("Pulse Rate is out of range!");
         ok = false;
     }
+
     if (!isSpO2Ok(spo2)) {
         showAlert("Oxygen Saturation out of range!");
         ok = false;
