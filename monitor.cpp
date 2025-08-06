@@ -31,7 +31,7 @@ void showAlert(const char* message) {
     cout << message << '\n';
     blinkWarning();
 }
-}
+} //namespace
 
 bool vitalsOk(float temperature, float pulseRate, float spo2) {
     if (!isTemperatureOk(temperature)) {
