@@ -17,14 +17,18 @@ Monitoring requires accurate reading and thresholding of the vitals and warnings
 - The code here has high complexity in a single function.
 - The code is not modular 
 - The tests are not complete - they do not cover all the needs of a consumer
-- extend a feature
 
 ## Tasks
 
 1. Reduce the cyclomatic complexity.
-1. Separate pure functions from I/O
-1. Avoid duplication - functions that do nearly the same thing
-1. Complete the tests - cover all conditions. 
+2. Separate pure functions from I/O
+3. Avoid duplication - functions that do nearly the same thing
+4. Complete the tests - cover all conditions.
+5. Consider extending the feature to incuding early warnings
+
+## Extension 1
+Continuous monitoring of vitals such as temperature, pulse rate, and SpO2 is essential for early detection of conditions afftecting patientwellbeing.
+The extension defines safe ranges for each vital sign and provides warning messages when values are close to critical range
 
 ## Self-evaluation
 
