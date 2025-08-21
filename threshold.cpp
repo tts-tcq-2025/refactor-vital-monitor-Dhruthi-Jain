@@ -4,13 +4,23 @@
 namespace {
     constexpr float TEMP_MIN = 95.0f;
     constexpr float TEMP_MAX = 102.0f;
-
     constexpr float PULSE_MIN = 60.0f;
     constexpr float PULSE_MAX = 100.0f;
-
     constexpr float SPO2_MIN = 90.0f;
+    constexpr float WARNING_TOLERANCE_FACTOR = 0.015f;
 
-    constexpr float WARNING_TOLERANCE_FACTOR = 0.015f; // 1.5%
+bool checkWarning(float value, float min, float max, const char* lowMsg, const char* highMsg) {
+        float tolerance = max * WARNING_TOLERANCE_FACTOR;
+        if (value <= min + tolerance) {
+            showWarning(lowMsg);
+            return true;
+        }
+        if (value >= max - tolerance) {
+            showWarning(highMsg);
+            return true;
+        }
+        return false;
+    }
 }
 
 bool isTemperatureOk(float temperature) {
@@ -26,29 +36,11 @@ bool isSpO2Ok(float spo2) {
 }
 
 bool isTemperatureWarning(float temperature) {
-    float tolerance = TEMP_MAX * WARNING_TOLERANCE_FACTOR;
-    if (temperature <= TEMP_MIN + tolerance) {
-        showWarning("Approaching hypothermia");
-        return true;
-    }
-    if (temperature >= TEMP_MAX - tolerance) {
-        showWarning("Approaching hyperthermia");
-        return true;
-    }
-    return false;
+     return checkWarning(temperature, TEMP_MIN, TEMP_MAX, "Approaching hypothermia", "Approaching hyperthermia");
 }
 
 bool isPulseWarning(float pulseRate) {
-    float tolerance = PULSE_MAX * WARNING_TOLERANCE_FACTOR;
-    if (pulseRate <= PULSE_MIN + tolerance) {
-        showWarning("Pulse rate nearing bradycardia");
-        return true;
-    }
-    if (pulseRate >= PULSE_MAX - tolerance) {
-        showWarning("Pulse rate nearing tachycardia");
-        return true;
-    }
-    return false;
+    return checkWarning(pulseRate, PULSE_MIN, PULSE_MAX, "Pulse rate nearing bradycardia", "Pulse rate nearing tachycardia");
 }
 
 bool isSpO2Warning(float spo2) {
