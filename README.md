@@ -10,7 +10,7 @@ Health Monitoring Systems
 
 Continuous monitoring of vital signs, such as respiration and heartbeat, plays a crucial role in early detection and prediction of conditions that may affect the wellbeing of a patient. 
 
-Monitoring requires accurate reading and thresholding of the vitals.
+Monitoring requires accurate reading and thresholding of the vitals and warnings before the value reaches critical range.
 
 ## Issues
 
@@ -21,9 +21,14 @@ Monitoring requires accurate reading and thresholding of the vitals.
 ## Tasks
 
 1. Reduce the cyclomatic complexity.
-1. Separate pure functions from I/O
-1. Avoid duplication - functions that do nearly the same thing
-1. Complete the tests - cover all conditions. 
+2. Separate pure functions from I/O
+3. Avoid duplication - functions that do nearly the same thing
+4. Complete the tests - cover all conditions.
+5. Consider extending the feature to incuding early warnings
+
+## Extension 1
+Continuous monitoring of vitals such as temperature, pulse rate, and SpO2 is essential for early detection of conditions afftecting patientwellbeing.
+The extension defines safe ranges for each vital sign and provides warning messages when values are close to critical range
 
 ## Self-evaluation
 
